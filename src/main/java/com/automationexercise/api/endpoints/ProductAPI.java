@@ -13,4 +13,13 @@ public class ProductAPI {
                 .extract()
                 .response();
     }
+
+    public static Response postToAllProducts() {
+        return given()
+                .when()
+                .post("/productsList")
+                .then()
+                .extract()
+                .response();
+    }
 }
