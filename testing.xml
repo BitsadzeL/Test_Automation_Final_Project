@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Automation Exercise Test Suite" parallel="tests" thread-count="2">
+
+    <test name="API Tests">
+        <packages>
+            <package name="com.automationexercise.tests.api"/>
+        </packages>
+    </test>
+
+    <test name="UI Tests">
+        <packages>
+            <package name="com.automationexercise.tests.ui"/>
+        </packages>
+    </test>
+
+</suite>
