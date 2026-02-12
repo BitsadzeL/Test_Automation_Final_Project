@@ -42,16 +42,16 @@ public class ProductAPITest extends BaseAPI {
     public void testPostToAllProducts() {
         Response response = ProductAPI.postToAllProducts();
 
-        // Verify status code is 405 (Method Not Allowed)
+
         Assert.assertEquals(response.getStatusCode(), 200,
                 "Status code should be 405");
 
-        // Verify responseCode in JSON is 405
+
         int responseCode = response.jsonPath().getInt("responseCode");
         Assert.assertEquals(responseCode, 405,
                 "Response code should be 405");
 
-        // Verify error message
+
         String message = response.jsonPath().getString("message");
         Assert.assertEquals(message, "This request method is not supported.",
                 "Error message should indicate method not supported");
