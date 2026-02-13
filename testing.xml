@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Automation Exercise Test Suite" parallel="tests" thread-count="2">
+
+<suite name="Automation Exercise Test Suite"
+       parallel="tests"
+       thread-count="2">
 
     <listeners>
         <listener class-name="com.automationexercise.listeners.TestListener"/>
     </listeners>
 
-    <test name="API Tests">
+
+    <test name="API Tests" parallel="classes" thread-count="2">
         <packages>
             <package name="com.automationexercise.tests.api"/>
         </packages>
     </test>
 
-    <test name="UI Tests">
+
+    <test name="UI Tests" parallel="methods" thread-count="1">
         <packages>
             <package name="com.automationexercise.tests.ui"/>
         </packages>

@@ -7,7 +7,7 @@ import com.automationexercise.utils.DriverFactory;
 
 public class BaseTest {
 
-    protected WebDriver driver;  // Changed from public to protected
+    protected WebDriver driver;
 
     @BeforeMethod
     public void setUp() {
@@ -18,7 +18,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown() {
-        // Driver will be closed here AFTER screenshot is taken
+
         DriverFactory.quitDriver();
     }
 }
