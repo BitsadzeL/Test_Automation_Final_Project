@@ -29,7 +29,7 @@ public class ContactUsFormTest extends BaseTest {
         ContactUsPage contactUsPage = new ContactUsPage(getDriver());
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
-        wait.pollingEvery(Duration.ofMillis(300));  // tighter polling
+        wait.pollingEvery(Duration.ofMillis(300));
 
 
         homePage.open();
@@ -107,5 +107,6 @@ public class ContactUsFormTest extends BaseTest {
                 "Step 11: Did not land on home page after clicking Home button");
 
         System.out.println("Contact Us form test completed successfully!");
+        //Assert.fail("Intentional failure to demonstrate screenshot capture in Allure report");
     }
 }

@@ -2,62 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Automation Exercise Test Suite" parallel="tests" thread-count="2">
 
+    <listeners>
+        <listener class-name="com.automationexercise.listeners.TestListener"/>
+    </listeners>
+
     <test name="API Tests">
         <packages>
             <package name="com.automationexercise.tests.api"/>
         </packages>
     </test>
-    <test name="UI - Login Tests">
-        <classes>
-            <class name="com.automationexercise.tests.ui.RegisterUserTest"/>
-            <class name="com.automationexercise.tests.ui.LoginUserWithCorrectCredentialsTest"/>
-        </classes>
-    </test>
-    <test name="UI - Negative Login">
-        <classes>
-            <class name="com.automationexercise.tests.ui.LoginUserWithIncorrectCredentialsTest"/>
-        </classes>
-    </test>
-    <test name="UI - Logout Test">
-        <classes>
-            <class name="com.automationexercise.tests.ui.LogoutUserTest"/>
-        </classes>
-    </test>
 
-    <test name="UI - Contact Us">
-        <classes>
-            <class name="com.automationexercise.tests.ui.ContactUsFormTest"/>
-        </classes>
-    </test>
-
-    <test name="UI - Test Cases Navigation">
-        <classes>
-            <class name="com.automationexercise.tests.ui.VerifyTestCasesPageTest"/>
-        </classes>
-    </test>
-
-    <test name="UI - Search Product">
-        <classes>
-            <class name="com.automationexercise.tests.ui.SearchProductTest"/>
-        </classes>
-    </test>
-
-    <test name="UI - Negative Registration">
-        <classes>
-            <class name="com.automationexercise.tests.ui.RegisterWithExistingEmailTest"/>
-        </classes>
-    </test>
-
-    <test name="UI - Category Products">
-        <classes>
-            <class name="com.automationexercise.tests.ui.ViewCategoryProductsTest"/>
-        </classes>
-    </test>
-    <test name="UI - Products Detail">
-        <classes>
-            <class name="com.automationexercise.tests.ui.VerifyAllProductsAndDetailPageTest"/>
-        </classes>
-    </test>
     <test name="UI Tests">
         <packages>
             <package name="com.automationexercise.tests.ui"/>

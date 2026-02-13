@@ -1,5 +1,6 @@
 package com.automationexercise.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,26 +10,20 @@ import java.util.List;
 
 public class ProductsPage extends BasePage {
 
-
     private final By allProductsHeader = By.xpath("//h2[text()='All Products']");
-
-
     private final By productCards = By.cssSelector(".features_items .col-sm-4");
-
-
     private final By firstViewProductLink = By.xpath("(//a[contains(@href, '/product_details/')])[1]");
+    private final By searchInput = By.id("search_product");
+    private final By searchButton = By.id("submit_search");
+    private final By searchedProductsHeader = By.xpath("//h2[text()='Searched Products']");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
-    /**
-     * Verifies that the "All Products" page is displayed
-     */
+    @Step("Verify 'All Products' page is visible")
     public boolean isAllProductsPageVisible() {
-
         try {
-
             wait.until(ExpectedConditions.visibilityOfElementLocated(allProductsHeader));
             return true;
         } catch (Exception e) {
@@ -36,9 +31,7 @@ public class ProductsPage extends BasePage {
         }
     }
 
-    /**
-     * Checks if at least one product is visible on the page
-     */
+    @Step("Verify products are visible on the page")
     public boolean areProductsVisible() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(productCards));
@@ -49,32 +42,17 @@ public class ProductsPage extends BasePage {
         }
     }
 
-    /**
-     * Clicks on "View Product" for the first product in the list
-     * Includes wait + scroll to make sure it's clickable
-     */
+    @Step("Click 'View Product' on first product")
     public void clickFirstViewProduct() {
-
         wait.until(ExpectedConditions.presenceOfElementLocated(firstViewProductLink));
-
         WebElement link = driver.findElement(firstViewProductLink);
-
-
         ((org.openqa.selenium.JavascriptExecutor) driver)
                 .executeScript("arguments[0].scrollIntoView({block: 'center'});", link);
-
-
         wait.until(ExpectedConditions.elementToBeClickable(link));
-
-
         link.click();
     }
 
-
-    private final By searchInput = By.id("search_product");
-    private final By searchButton = By.id("submit_search");
-    private final By searchedProductsHeader = By.xpath("//h2[text()='Searched Products']");
-
+    @Step("Search for product: {productName}")
     public void searchForProduct(String productName) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchInput));
         sendKeys(searchInput, productName);
@@ -82,10 +60,8 @@ public class ProductsPage extends BasePage {
         click(searchButton);
     }
 
+    @Step("Verify 'Searched Products' header is visible")
     public boolean isSearchedProductsVisible() {
         return isDisplayed(searchedProductsHeader);
     }
-
-
-
 }
