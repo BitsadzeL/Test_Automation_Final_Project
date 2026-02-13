@@ -1,5 +1,6 @@
 package com.automationexercise.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -9,7 +10,7 @@ public class AccountInfoPage extends BasePage {
     private final By enterAccountInfoHeader = By.xpath("//b[text()='Enter Account Information']");
 
     private final By genderMr = By.id("id_gender1");
-    private final By genderMrs = By.id("id_gender2"); // optional
+    private final By genderMrs = By.id("id_gender2");
 
     private final By passwordField = By.id("password");
     private final By daysDropdown = By.id("days");
@@ -36,10 +37,12 @@ public class AccountInfoPage extends BasePage {
         super(driver);
     }
 
+    @Step("Verify 'Enter Account Information' header is visible")
     public boolean isEnterAccountInfoVisible() {
         return isDisplayed(enterAccountInfoHeader);
     }
 
+    @Step("Fill account details with title: {title}, name: {firstName} {lastName}")
     public void fillAccountDetails(
             String title,
             String password,
@@ -79,6 +82,7 @@ public class AccountInfoPage extends BasePage {
         sendKeys(mobileField, mobile);
     }
 
+    @Step("Click 'Create Account' button")
     public void clickCreateAccount() {
         click(createAccountButton);
     }

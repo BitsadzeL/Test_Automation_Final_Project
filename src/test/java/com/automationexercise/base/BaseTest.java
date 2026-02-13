@@ -7,17 +7,18 @@ import com.automationexercise.utils.DriverFactory;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    protected WebDriver driver;  // Changed from public to protected
 
     @BeforeMethod
     public void setUp() {
-        DriverFactory.initDriver("chrome");  // ← Changed
-        driver = DriverFactory.getDriver();   // ← Changed
+        DriverFactory.initDriver("chrome");
+        driver = DriverFactory.getDriver();
         driver.get("https://automationexercise.com");
     }
 
     @AfterMethod
     public void tearDown() {
-        DriverFactory.quitDriver();  // ← Changed
+        // Driver will be closed here AFTER screenshot is taken
+        DriverFactory.quitDriver();
     }
 }
